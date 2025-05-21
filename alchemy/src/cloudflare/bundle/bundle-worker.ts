@@ -46,6 +46,7 @@ export async function bundleWorkerScript<B extends Bindings>(
         loader: {
           ".sql": "text",
           ".json": "json",
+          ...(props.bundle?.loader || {})
         },
         plugins: [
           ...(nodeJsCompatMode === "v2" ? [await nodeJsCompatPlugin()] : []),
